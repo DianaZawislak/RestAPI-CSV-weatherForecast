@@ -1,0 +1,5 @@
+pytest
+pytest-pylint
+python-dotenv
+ratelimiter
+pandas
