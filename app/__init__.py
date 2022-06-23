@@ -106,7 +106,7 @@ def api_logging(message):
 
 def get_city_info(city, rows=5):
     """Queries the wordcities.csv file """
-    df = pd.read_csv(os.path.join(Config.BASE_DIR, '..', 'data', 'worldcities.csv'), nrows=rows)
+    df = pd.read_csv(os.path.join(Config.BASE_DIR, '..', 'data', '../data/worldcities.csv'), nrows=rows)
     return df.query('city_ascii == @city')
 
 
