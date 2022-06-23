@@ -1,8 +1,8 @@
 # Combining CSV data with API
 
-### Name: <Insert Here>
+### Name: Diana Zawislak
 
-### UCID: <Insert Here>
+### UCID: DZ29
 
 ## Introduction
 
