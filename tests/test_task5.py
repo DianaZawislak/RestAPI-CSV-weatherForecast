@@ -6,7 +6,7 @@ import app
 
 @pytest.mark.parametrize("city, lat, lng", [
     ("Tokyo", 35.6839, 139.7744),
-    ("Jakarta", -6.2146, 106.8451),
+    ("Warsaw",  52.2300, 21.0111),
 ])
 def test_task5(load_env, city, lng, lat):
     """See task 5 in the readme"""

@@ -69,13 +69,15 @@ def get_city_forecast_response(city):
     print(api_response)
     return str(api_response["location"]["name"])
 
+
 def get_city_lng_lat(city):
     """searches csv for city info and returns it"""
     city_info = get_city_info(city)
-    lng = float(city_info.lng.to.string(index=False))
-    lat = float(city_info.lat.to.string(index=False))
+    lng = float(city_info.lng.to_string(index=False))
+    lat = float(city_info.lat.to_string(index=False))
     lng_lat = (lng, lat)
     return lng_lat
+
 
 def setup():
     """Setup functions to run when app starts"""
