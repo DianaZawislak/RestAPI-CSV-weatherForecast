@@ -1,4 +1,4 @@
- """Task 3"""
+"""Task 3"""
 import pytest
 
 import app

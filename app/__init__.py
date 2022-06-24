@@ -59,6 +59,7 @@ def get_city_population(city):
 def get_city_current_condition(city):
     """searches the weather api to get the current condition of the city"""
     api_response = json.loads(weather_forecast_api(city))
+    api_logging(api_response)
     return str(api_response["current"]["condition"]["text"])
 
 
@@ -68,6 +69,13 @@ def get_city_forecast_response(city):
     print(api_response)
     return str(api_response["location"]["name"])
 
+def get_city_lng_lat(city):
+    """searches csv for city info and returns it"""
+    city_info = get_city_info(city)
+    lng = float(city_info.lng.to.string(index=False))
+    lat = float(city_info.lat.to.string(index=False))
+    lng_lat = (lng, lat)
+    return lng_lat
 
 def setup():
     """Setup functions to run when app starts"""
@@ -80,7 +88,7 @@ def setup():
 def print_banner():
     """Prints the banner title"""
     print("\t**********************************************")
-    print("\t***  Welcome to City Information Service  ***")
+    print("\t***  Welcome to City Information Service   ***")
     print("\t**********************************************")
 
 
@@ -104,7 +112,7 @@ def api_logging(message):
     log.info(message)
 
 
-def get_city_info(city, rows=5):
+def get_city_info(city, rows=419):
     """Queries the wordcities.csv file """
     df = pd.read_csv(os.path.join(Config.BASE_DIR, '..', 'data', '../data/worldcities.csv'), nrows=rows)
     return df.query('city_ascii == @city')
@@ -133,7 +141,7 @@ LOGGING_CONFIG = {
     },
     'handlers': {
         'default': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'formatter': 'standard',
             'class': 'logging.StreamHandler',
             'stream': 'ext://sys.stdout',  # Default is stderr
@@ -148,7 +156,7 @@ LOGGING_CONFIG = {
         },
         'file.handler.api_response': {
             'class': 'logging.handlers.RotatingFileHandler',
-            'formatter': 'just_message',
+            'formatter': 'standard',
             'filename': os.path.join(Config.LOG_DIR, 'api_response.json'),
             'encoding': 'utf-8',
             'maxBytes': 10000000,
